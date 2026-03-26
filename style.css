@@ -28,7 +28,7 @@ body::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.75);
     z-index: -1;
 }
 
@@ -46,8 +46,7 @@ body::before {
 
 /* Hero */
 .hero { padding: 8rem 7% 2rem; text-align: center; }
-.hero h3 { font-weight: 300; font-size: 1rem; opacity: 0.8; }
-.hero h1 { font-size: 2.8rem; color: var(--primary); margin: 5px 0; }
+.hero h1 { font-size: 3rem; color: var(--primary); margin: 5px 0; }
 .summary-box { display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem; }
 .income span { color: var(--success); font-weight: bold; }
 .expense span { color: var(--danger); font-weight: bold; }
@@ -58,11 +57,11 @@ section { padding: 2rem 5%; position: relative; z-index: 1; }
     background: var(--dark);
     padding: 1.5rem;
     border-radius: 15px;
-    border: 1px solid #333;
+    border: 1px solid #444;
     max-width: 600px;
     margin: 0 auto;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
 }
 
 h2 { margin-bottom: 1.2rem; border-bottom: 1px solid var(--primary); padding-bottom: 8px; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
@@ -70,68 +69,60 @@ h2 { margin-bottom: 1.2rem; border-bottom: 1px solid var(--primary); padding-bot
 /* Budget List */
 .category-item { margin-bottom: 15px; }
 .category-info { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.8rem; }
-.progress-bar { background: #333; height: 8px; border-radius: 4px; overflow: hidden; }
-.progress-fill { height: 100%; transition: 0.5s ease; }
+.progress-bar { background: #333; height: 10px; border-radius: 5px; overflow: hidden; }
+.progress-fill { height: 100%; transition: 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 
-/* Form Elements - Perbaikan Utama di Sini */
-.form-row { 
-    display: flex; 
-    gap: 8px; 
-    margin-bottom: 10px; 
-    flex-wrap: wrap; /* Biar ngebungkus kalau sempit */
-}
-
+/* Form Elements */
+.form-row { display: flex; gap: 10px; margin-bottom: 10px; }
 input, select {
-    flex: 1; 
-    min-width: 100px; /* Minimal lebar input */
-    padding: 10px;
-    background: rgba(40, 40, 40, 0.8);
-    border: 1px solid #444;
-    color: #fff; 
-    border-radius: 6px;
+    flex: 1; padding: 12px;
+    background: rgba(45, 45, 45, 0.8);
+    border: 1px solid #555;
+    color: #fff; border-radius: 8px;
     font-size: 0.9rem;
 }
+input:focus { border-color: var(--primary); outline: none; }
 
 .btn-main { 
-    width: 100%; padding: 12px; background: var(--primary); 
+    width: 100%; padding: 14px; background: var(--primary); 
     color: #fff; border: none; font-weight: bold; 
-    cursor: pointer; border-radius: 6px; margin-top: 5px;
+    cursor: pointer; border-radius: 8px; margin-top: 10px;
+    transition: 0.3s;
 }
+.btn-main:hover { background: #9c7145; transform: translateY(-2px); }
 
 .btn-sm { 
     background: var(--primary); color: #fff; border: none; 
-    padding: 0 15px; border-radius: 6px; cursor: pointer;
-    min-height: 40px;
+    padding: 0 20px; border-radius: 8px; cursor: pointer;
 }
+
+.btn-reset {
+    background: #444; color: #bbb; border: none; padding: 5px 10px;
+    font-size: 0.7rem; cursor: pointer; border-radius: 5px; margin-top: 10px;
+}
+.btn-reset:hover { background: var(--danger); color: #fff; }
 
 /* List Riwayat */
 .list { list-style: none; margin-top: 1rem; }
 .list li {
-    background: rgba(45, 45, 45, 0.7);
-    margin-bottom: 8px; padding: 12px;
+    background: rgba(50, 50, 50, 0.6);
+    margin-bottom: 10px; padding: 12px;
     display: flex; justify-content: space-between; align-items: center;
-    border-radius: 8px; border: 1px solid #333; font-size: 0.85rem;
+    border-radius: 10px; border: 1px solid #444; font-size: 0.85rem;
 }
-.list li.plus { border-left: 4px solid var(--success); }
-.list li.minus { border-left: 4px solid var(--danger); }
-.delete-btn { background: var(--danger); color: white; border: none; padding: 2px 8px; cursor: pointer; border-radius: 4px; margin-left: 10px; }
+.list li.plus { border-left: 5px solid var(--success); }
+.list li.minus { border-left: 5px solid var(--danger); }
+.delete-btn { background: var(--danger); color: white; border: none; padding: 4px 8px; cursor: pointer; border-radius: 5px; }
 
 /* Footer */
-footer { text-align: center; padding: 2rem 7%; background: rgba(1, 1, 1, 0.9); }
-.footer-status { margin-bottom: 8px; font-size: 0.9rem; }
-footer p { font-size: 0.8rem; opacity: 0.6; }
-footer a { color: var(--primary); text-decoration: none; }
+footer { text-align: center; padding: 3rem 7%; background: rgba(1,1,1,0.9); margin-top: 2rem; }
 
 /* RESPONSIVE UNTUK HP */
-@media (max-width: 480px) {
-    .navbar { padding: 1rem 5%; }
+@media (max-width: 600px) {
+    .navbar-logo { font-size: 1.2rem; }
     .hero h1 { font-size: 2.2rem; }
-    .summary-box { gap: 1rem; flex-wrap: wrap; }
-    .container-box { padding: 1rem; width: 100%; }
-    
-    /* Paksa input jadi tumpuk ke bawah di layar sangat kecil */
-    .form-row { flex-direction: column; }
-    input, select, .btn-sm { width: 100%; }
-    
-    .navbar-nav a { margin-left: 0.5rem; font-size: 0.75rem; }
+    .summary-box { gap: 1rem; }
+    .form-row { flex-direction: column; } 
+    .btn-sm { padding: 12px; width: 100%; }
+    .container-box { padding: 1.2rem; }
 }
