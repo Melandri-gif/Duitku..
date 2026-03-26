@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DuitKu - Management</title>
+    <title>DuitKu - Smart Finance</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#b6895b">
-    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/feather-icons"></script>
-
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -36,11 +34,11 @@
 
     <section class="budget-section" id="budget">
         <div class="container-box">
-            <h2><i data-feather="pie-chart"></i> Anggaran Kategori</h2>
+            <h2><i data-feather="pie-chart"></i> Status Anggaran</h2>
             <div id="category-budget-list"></div>
             
-            <div class="budget-setup">
-                <h4>Atur Batas Anggaran</h4>
+            <div class="budget-setup" style="margin-top: 20px; border-top: 1px dashed #444; padding-top: 15px;">
+                <p style="font-size: 0.8rem; margin-bottom: 10px;">Atur Batas Anggaran:</p>
                 <div class="form-row">
                     <select id="budget-category-select">
                         <option value="Makan">Makan</option>
@@ -57,10 +55,10 @@
 
     <section class="input-section" id="input">
         <div class="container-box">
-            <h3><i data-feather="plus-circle"></i> Catat Transaksi</h3>
+            <h2><i data-feather="plus-circle"></i> Catat Transaksi</h2>
             <form id="transaction-form">
-                <input type="text" id="desc" placeholder="Keterangan..." required>
-                <input type="number" id="amount" placeholder="Jumlah (Rp)..." required>
+                <input type="text" id="desc" placeholder="Keterangan..." required style="margin-bottom: 10px; width: 100%;">
+                <input type="number" id="amount" placeholder="Jumlah (Rp)..." required style="margin-bottom: 10px; width: 100%;">
                 <div class="form-row">
                     <select id="trans-category">
                         <option value="Makan">Makan</option>
@@ -73,21 +71,21 @@
                         <option value="income">Pemasukan</option>
                     </select>
                 </div>
-                <button type="submit" class="btn-main">Simpan</button>
+                <button type="submit" class="btn-main">Simpan Transaksi</button>
             </form>
         </div>
     </section>
 
     <section class="history" id="history">
         <div class="container-box">
-            <h2><i data-feather="list"></i> Riwayat Transaksi</h2>
+            <h2><i data-feather="list"></i> Riwayat</h2>
             <ul id="transaction-list" class="list"></ul>
         </div>
     </section>
 
     <footer>
-        <div class="footer-status">Status: <span id="footer-status">AMAN</span></div>
-        <p>&copy; 2026 DuitKu. Created by <a href="#">Melandri</a>.</p>
+        <div class="footer-status">Status: <strong id="footer-status">AMAN</strong></div>
+        <p>&copy; 2026 DuitKu. Created by Melandri.</p>
     </footer>
 
     <script src="script.js"></script>
