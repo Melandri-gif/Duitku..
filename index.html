@@ -23,7 +23,7 @@
 
     <section class="hero" id="home">
         <main class="content">
-            <h3>Total Saldo Anda</h3>
+            <h3>Saldo Saat Ini</h3>
             <h1 id="total-balance">Rp 0</h1>
             <div class="summary-box">
                 <div class="income"><p>Pemasukan</p><span id="total-income">Rp 0</span></div>
@@ -37,8 +37,8 @@
             <h2><i data-feather="pie-chart"></i> Status Anggaran</h2>
             <div id="category-budget-list"></div>
             
-            <div class="budget-setup" style="margin-top: 20px; border-top: 1px dashed #444; padding-top: 15px;">
-                <p style="font-size: 0.8rem; margin-bottom: 10px;">Atur Batas Anggaran:</p>
+            <div style="margin-top: 25px; border-top: 1px dashed #555; padding-top: 20px;">
+                <p style="font-size: 0.85rem; margin-bottom: 12px; color: var(--primary);">Atur Limit Anggaran:</p>
                 <div class="form-row">
                     <select id="budget-category-select">
                         <option value="Makan">Makan</option>
@@ -47,7 +47,7 @@
                         <option value="Lainnya">Lainnya</option>
                     </select>
                     <input type="number" id="budget-amount-input" placeholder="Rp...">
-                    <button onclick="setCategoryBudget()" class="btn-sm">Set</button>
+                    <button onclick="setCategoryBudget()" class="btn-sm">Update</button>
                 </div>
             </div>
         </div>
@@ -57,8 +57,8 @@
         <div class="container-box">
             <h2><i data-feather="plus-circle"></i> Catat Transaksi</h2>
             <form id="transaction-form">
-                <input type="text" id="desc" placeholder="Keterangan..." required style="margin-bottom: 10px; width: 100%;">
-                <input type="number" id="amount" placeholder="Jumlah (Rp)..." required style="margin-bottom: 10px; width: 100%;">
+                <input type="text" id="desc" placeholder="Keterangan (ex: Beli Kopi)" required style="width: 100%; margin-bottom: 10px;">
+                <input type="number" id="amount" placeholder="Jumlah (Rp)" required style="width: 100%; margin-bottom: 10px;">
                 <div class="form-row">
                     <select id="trans-category">
                         <option value="Makan">Makan</option>
@@ -71,29 +71,30 @@
                         <option value="income">Pemasukan</option>
                     </select>
                 </div>
-                <button type="submit" class="btn-main">Simpan Transaksi</button>
+                <button type="submit" class="btn-main">Simpan</button>
             </form>
         </div>
     </section>
 
     <section class="history" id="history">
         <div class="container-box">
-            <h2><i data-feather="list"></i> Riwayat</h2>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2><i data-feather="list"></i> Riwayat</h2>
+                <button onclick="clearAll()" class="btn-reset">Hapus Semua</button>
+            </div>
             <ul id="transaction-list" class="list"></ul>
         </div>
     </section>
 
     <footer>
-        <div class="footer-status">Status: <strong id="footer-status">AMAN</strong></div>
+        <div style="margin-bottom: 10px;">Status: <strong id="footer-status">AMAN</strong></div>
         <p>&copy; 2026 DuitKu. Created by Melandri.</p>
     </footer>
 
     <script src="script.js"></script>
     <script>
         feather.replace();
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js');
-        }
+        if ('serviceWorker' in navigator) { navigator.serviceWorker.register('sw.js'); }
     </script>
 </body>
 </html>
