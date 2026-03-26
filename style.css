@@ -1,36 +1,137 @@
-:root { --primary: #b6895b; --bg: #010101; --dark: #1a1a1a; }
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
-body { background-color: var(--bg); color: #fff; }
+:root {
+    --primary: #b6895b;
+    --bg: #010101;
+    --dark: rgba(26, 26, 26, 0.9); 
+    --text: #fff;
+    --success: #2ecc71;
+    --danger: #e74c3c;
+}
 
-.navbar { display: flex; justify-content: space-between; padding: 1.5rem 7%; background: rgba(1,1,1,0.9); position: fixed; top: 0; width: 100%; z-index: 999; border-bottom: 1px solid #333; }
+* {
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-image: url('https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?q=80&w=1920&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--text);
+    position: relative;
+    min-height: 100vh;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: -1;
+}
+
+/* Navbar */
+.navbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 7%; background: rgba(1, 1, 1, 0.95);
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 999; border-bottom: 1px solid #333;
+}
+
 .navbar-logo { font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; }
 .navbar-logo span { color: var(--primary); }
-.navbar-nav a { color: #fff; margin-left: 1.5rem; text-decoration: none; font-size: 0.9rem; }
+.navbar-nav a { color: #fff; margin-left: 1rem; text-decoration: none; font-size: 0.85rem; }
 
+/* Hero */
 .hero { padding: 8rem 7% 2rem; text-align: center; }
-.hero h1 { font-size: 3rem; color: var(--primary); }
-.summary-box { display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; }
-.income span { color: #2ecc71; } .expense span { color: #e74c3c; }
+.hero h3 { font-weight: 300; font-size: 1rem; opacity: 0.8; }
+.hero h1 { font-size: 2.8rem; color: var(--primary); margin: 5px 0; }
+.summary-box { display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem; }
+.income span { color: var(--success); font-weight: bold; }
+.expense span { color: var(--danger); font-weight: bold; }
 
-section { padding: 2rem 7%; }
-.container-box { background: var(--dark); padding: 1.5rem; border-radius: 12px; border: 1px solid #333; max-width: 600px; margin: 0 auto; }
-h2 { margin-bottom: 1rem; color: var(--primary); font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
+/* Container & Sections */
+section { padding: 2rem 5%; position: relative; z-index: 1; }
+.container-box {
+    background: var(--dark);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 1px solid #333;
+    max-width: 600px;
+    margin: 0 auto;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
 
+h2 { margin-bottom: 1.2rem; border-bottom: 1px solid var(--primary); padding-bottom: 8px; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
+
+/* Budget List */
 .category-item { margin-bottom: 15px; }
-.category-info { display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 5px; }
+.category-info { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.8rem; }
 .progress-bar { background: #333; height: 8px; border-radius: 4px; overflow: hidden; }
-.progress-fill { height: 100%; transition: 0.5s; }
+.progress-fill { height: 100%; transition: 0.5s ease; }
 
-.form-row { display: flex; gap: 10px; margin-bottom: 10px; }
-input, select { flex: 1; padding: 10px; background: #222; border: 1px solid #444; color: #fff; border-radius: 5px; }
-.btn-main { width: 100%; padding: 12px; background: var(--primary); color: #fff; border: none; font-weight: bold; border-radius: 5px; cursor: pointer; }
-.btn-sm { background: var(--primary); color: #fff; border: none; padding: 0 15px; border-radius: 5px; cursor: pointer; }
+/* Form Elements - Perbaikan Utama di Sini */
+.form-row { 
+    display: flex; 
+    gap: 8px; 
+    margin-bottom: 10px; 
+    flex-wrap: wrap; /* Biar ngebungkus kalau sempit */
+}
 
-.list { list-style: none; }
-.list li { background: #222; margin-bottom: 8px; padding: 10px; display: flex; justify-content: space-between; border-radius: 5px; font-size: 0.9rem; }
-.list li.plus { border-left: 4px solid #2ecc71; }
-.list li.minus { border-left: 4px solid #e74c3c; }
-.delete-btn { background: #e74c3c; color: #fff; border: none; padding: 0 5px; cursor: pointer; border-radius: 3px; }
+input, select {
+    flex: 1; 
+    min-width: 100px; /* Minimal lebar input */
+    padding: 10px;
+    background: rgba(40, 40, 40, 0.8);
+    border: 1px solid #444;
+    color: #fff; 
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
 
-footer { text-align: center; padding: 2rem; background: var(--dark); border-top: 1px solid #333; }
+.btn-main { 
+    width: 100%; padding: 12px; background: var(--primary); 
+    color: #fff; border: none; font-weight: bold; 
+    cursor: pointer; border-radius: 6px; margin-top: 5px;
+}
+
+.btn-sm { 
+    background: var(--primary); color: #fff; border: none; 
+    padding: 0 15px; border-radius: 6px; cursor: pointer;
+    min-height: 40px;
+}
+
+/* List Riwayat */
+.list { list-style: none; margin-top: 1rem; }
+.list li {
+    background: rgba(45, 45, 45, 0.7);
+    margin-bottom: 8px; padding: 12px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-radius: 8px; border: 1px solid #333; font-size: 0.85rem;
+}
+.list li.plus { border-left: 4px solid var(--success); }
+.list li.minus { border-left: 4px solid var(--danger); }
+.delete-btn { background: var(--danger); color: white; border: none; padding: 2px 8px; cursor: pointer; border-radius: 4px; margin-left: 10px; }
+
+/* Footer */
+footer { text-align: center; padding: 2rem 7%; background: rgba(1, 1, 1, 0.9); }
+.footer-status { margin-bottom: 8px; font-size: 0.9rem; }
+footer p { font-size: 0.8rem; opacity: 0.6; }
 footer a { color: var(--primary); text-decoration: none; }
+
+/* RESPONSIVE UNTUK HP */
+@media (max-width: 480px) {
+    .navbar { padding: 1rem 5%; }
+    .hero h1 { font-size: 2.2rem; }
+    .summary-box { gap: 1rem; flex-wrap: wrap; }
+    .container-box { padding: 1rem; width: 100%; }
+    
+    /* Paksa input jadi tumpuk ke bawah di layar sangat kecil */
+    .form-row { flex-direction: column; }
+    input, select, .btn-sm { width: 100%; }
+    
+    .navbar-nav a { margin-left: 0.5rem; font-size: 0.75rem; }
+}
