@@ -39,6 +39,14 @@ function removeTransaction(id) {
     init();
 }
 
+function clearAll() {
+    if(confirm("Hapus semua riwayat transaksi?")) {
+        transactions = [];
+        localStorage.setItem('transactions', JSON.stringify(transactions));
+        init();
+    }
+}
+
 function updateValues() {
     const amounts = transactions.map(t => t.amount);
     const total = amounts.reduce((acc, item) => (acc += item), 0);
@@ -51,23 +59,23 @@ function updateValues() {
 
     const catList = document.getElementById('category-budget-list');
     catList.innerHTML = '';
-    let over = false;
+    let isOver = false;
 
     Object.keys(categoryBudgets).forEach(cat => {
         const budget = categoryBudgets[cat];
         const spent = transactions.filter(t => t.category === cat && t.amount < 0).reduce((a, b) => a + Math.abs(b.amount), 0);
         if (budget > 0 || spent > 0) {
             const pct = budget > 0 ? (spent / budget) * 100 : 0;
-            if (pct >= 100) over = true;
+            if (pct >= 100) isOver = true;
             catList.innerHTML += `
                 <div class="category-item">
-                    <div class="category-info"><span>${cat}</span><span>${spent.toLocaleString()}/${budget.toLocaleString()}</span></div>
+                    <div class="category-info"><span>${cat}</span><span>${spent.toLocaleString()} / ${budget.toLocaleString()}</span></div>
                     <div class="progress-bar"><div class="progress-fill" style="width:${pct > 100 ? 100 : pct}%; background:${pct >= 100 ? '#e74c3c' : '#b6895b'}"></div></div>
                 </div>`;
         }
     });
-    document.getElementById('footer-status').innerText = over ? "BOROS!" : "AMAN";
-    document.getElementById('footer-status').style.color = over ? "#e74c3c" : "#2ecc71";
+    document.getElementById('footer-status').innerText = isOver ? "BOROS!" : "AMAN";
+    document.getElementById('footer-status').style.color = isOver ? "#e74c3c" : "#2ecc71";
 }
 
 function init() {
@@ -75,7 +83,7 @@ function init() {
     transactions.forEach(t => {
         const item = document.createElement('li');
         item.classList.add(t.amount < 0 ? 'minus' : 'plus');
-        item.innerHTML = `${t.text} (${t.category}) <span>Rp ${Math.abs(t.amount).toLocaleString()} <button class="delete-btn" onclick="removeTransaction(${t.id})">x</button></span>`;
+        item.innerHTML = `<div><strong>${t.text}</strong><br><small>${t.category}</small></div> <span>Rp ${Math.abs(t.amount).toLocaleString()} <button class="delete-btn" onclick="removeTransaction(${t.id})">x</button></span>`;
         list.appendChild(item);
     });
     updateValues();
