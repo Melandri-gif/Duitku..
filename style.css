@@ -1,0 +1,36 @@
+:root { --primary: #b6895b; --bg: #010101; --dark: #1a1a1a; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+body { background-color: var(--bg); color: #fff; }
+
+.navbar { display: flex; justify-content: space-between; padding: 1.5rem 7%; background: rgba(1,1,1,0.9); position: fixed; top: 0; width: 100%; z-index: 999; border-bottom: 1px solid #333; }
+.navbar-logo { font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; }
+.navbar-logo span { color: var(--primary); }
+.navbar-nav a { color: #fff; margin-left: 1.5rem; text-decoration: none; font-size: 0.9rem; }
+
+.hero { padding: 8rem 7% 2rem; text-align: center; }
+.hero h1 { font-size: 3rem; color: var(--primary); }
+.summary-box { display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; }
+.income span { color: #2ecc71; } .expense span { color: #e74c3c; }
+
+section { padding: 2rem 7%; }
+.container-box { background: var(--dark); padding: 1.5rem; border-radius: 12px; border: 1px solid #333; max-width: 600px; margin: 0 auto; }
+h2 { margin-bottom: 1rem; color: var(--primary); font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
+
+.category-item { margin-bottom: 15px; }
+.category-info { display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 5px; }
+.progress-bar { background: #333; height: 8px; border-radius: 4px; overflow: hidden; }
+.progress-fill { height: 100%; transition: 0.5s; }
+
+.form-row { display: flex; gap: 10px; margin-bottom: 10px; }
+input, select { flex: 1; padding: 10px; background: #222; border: 1px solid #444; color: #fff; border-radius: 5px; }
+.btn-main { width: 100%; padding: 12px; background: var(--primary); color: #fff; border: none; font-weight: bold; border-radius: 5px; cursor: pointer; }
+.btn-sm { background: var(--primary); color: #fff; border: none; padding: 0 15px; border-radius: 5px; cursor: pointer; }
+
+.list { list-style: none; }
+.list li { background: #222; margin-bottom: 8px; padding: 10px; display: flex; justify-content: space-between; border-radius: 5px; font-size: 0.9rem; }
+.list li.plus { border-left: 4px solid #2ecc71; }
+.list li.minus { border-left: 4px solid #e74c3c; }
+.delete-btn { background: #e74c3c; color: #fff; border: none; padding: 0 5px; cursor: pointer; border-radius: 3px; }
+
+footer { text-align: center; padding: 2rem; background: var(--dark); border-top: 1px solid #333; }
+footer a { color: var(--primary); text-decoration: none; }
