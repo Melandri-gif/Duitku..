@@ -122,7 +122,10 @@ footer { text-align: center; padding: 3rem 7%; background: rgba(1,1,1,0.9); marg
     .navbar-logo { font-size: 1.2rem; }
     .hero h1 { font-size: 2.2rem; }
     .summary-box { gap: 1rem; }
-    .form-row { flex-direction: column; } 
+    .form-row { 
+        display: flex;
+        gap: 10px;
+        flex-direction: column; } 
     .btn-sm { padding: 12px; width: 100%; }
     .container-box { padding: 1.2rem; }
 }
